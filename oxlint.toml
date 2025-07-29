@@ -1,0 +1,34 @@
+# oxlint configuration file
+# https://oxc-project.github.io/docs/guide/configuration
+
+[typescript]
+# TypeScript 관련 규칙
+no-unused-vars = "error"
+no-console = "warn"
+prefer-const = "error"
+no-var = "error"
+prefer-template = "warn"
+
+[javascript]
+# JavaScript 관련 규칙
+no-unused-vars = "error"
+no-console = "warn"
+prefer-const = "error"
+no-var = "error"
+prefer-template = "warn"
+
+[react]
+# React 관련 규칙
+jsx-key = "error"
+jsx-no-duplicate-props = "error"
+jsx-no-undef = "error"
+
+[imports]
+# Import 관련 규칙
+no-duplicate-imports = "error"
+no-unused-imports = "error"
+
+[style]
+# 코드 스타일 관련 규칙
+no-var = "error"
+prefer-template = "warn" 

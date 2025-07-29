@@ -1,103 +1,118 @@
-import Image from "next/image";
+import Image from 'next/image';
+import ExampleComponent from '@/components/ExampleComponent';
+import GoodComponent from '@/components/GoodComponent';
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className='font-sans min-h-screen p-8'>
+      <main className='max-w-6xl mx-auto'>
+        {/* Header */}
+        <div className='text-center mb-12'>
+          <Image
+            className='dark:invert mx-auto mb-4'
+            src='/next.svg'
+            alt='Next.js logo'
+            width={180}
+            height={38}
+            priority
+          />
+          <h1 className='text-4xl font-bold mb-4'>oxlint 예제 프로젝트</h1>
+          <p className='text-lg text-gray-600 dark:text-gray-300'>
+            oxlint를 사용한 코드 품질 관리 예제
+          </p>
+        </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+        {/* oxlint 설명 */}
+        <div className='mb-8 p-6 bg-blue-50 dark:bg-blue-900/20 rounded-lg'>
+          <h2 className='text-2xl font-bold mb-4 text-blue-800 dark:text-blue-200'>
+            oxlint란?
+          </h2>
+          <p className='text-blue-700 dark:text-blue-300 mb-4'>
+            oxlint는 Rust로 작성된 빠른 JavaScript/TypeScript 린터입니다.
+            ESLint보다 훨씬 빠르며, 다양한 코드 품질 문제를 감지할 수 있습니다.
+          </p>
+          <div className='grid grid-cols-1 md:grid-cols-2 gap-4 text-sm'>
+            <div>
+              <h3 className='font-semibold mb-2'>주요 기능:</h3>
+              <ul className='list-disc list-inside space-y-1'>
+                <li>사용하지 않는 변수/import 감지</li>
+                <li>중복 import 감지</li>
+                <li>React JSX 규칙 검사</li>
+                <li>코드 스타일 제안</li>
+                <li>TypeScript 지원</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className='font-semibold mb-2'>사용법:</h3>
+              <ul className='list-disc list-inside space-y-1'>
+                <li>
+                  <code className='bg-blue-200 px-1 rounded'>
+                    npm run oxlint
+                  </code>{' '}
+                  - 린팅 실행
+                </li>
+                <li>
+                  <code className='bg-blue-200 px-1 rounded'>
+                    npm run oxlint:fix
+                  </code>{' '}
+                  - 자동 수정
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* 컴포넌트 예제 */}
+        <div className='grid grid-cols-1 lg:grid-cols-2 gap-8'>
+          {/* 문제가 있는 컴포넌트 */}
+          <div>
+            <h2 className='text-2xl font-bold mb-4 text-red-800 dark:text-red-200'>
+              ❌ 문제가 있는 컴포넌트
+            </h2>
+            <p className='text-red-600 dark:text-red-300 mb-4'>
+              이 컴포넌트는 oxlint가 감지할 수 있는 다양한 문제들을 포함하고
+              있습니다.
+            </p>
+            <ExampleComponent title='문제 컴포넌트' count={5} />
+          </div>
+
+          {/* 올바른 컴포넌트 */}
+          <div>
+            <h2 className='text-2xl font-bold mb-4 text-green-800 dark:text-green-200'>
+              ✅ 올바른 컴포넌트
+            </h2>
+            <p className='text-green-600 dark:text-green-300 mb-4'>
+              이 컴포넌트는 oxlint 규칙을 잘 따르고 있습니다.
+            </p>
+            <GoodComponent title='올바른 컴포넌트' count={10} />
+          </div>
+        </div>
+
+        {/* 사용법 안내 */}
+        <div className='mt-12 p-6 bg-gray-50 dark:bg-gray-800 rounded-lg'>
+          <h2 className='text-2xl font-bold mb-4'>사용법</h2>
+          <div className='space-y-4'>
+            <div>
+              <h3 className='font-semibold mb-2'>1. oxlint 실행</h3>
+              <code className='block bg-gray-200 dark:bg-gray-700 p-2 rounded'>
+                npm run oxlint
+              </code>
+            </div>
+            <div>
+              <h3 className='font-semibold mb-2'>2. 자동 수정</h3>
+              <code className='block bg-gray-200 dark:bg-gray-700 p-2 rounded'>
+                npm run oxlint:fix
+              </code>
+            </div>
+            <div>
+              <h3 className='font-semibold mb-2'>3. 개발 서버 실행</h3>
+              <code className='block bg-gray-200 dark:bg-gray-700 p-2 rounded'>
+                npm run dev
+              </code>
+            </div>
+          </div>
         </div>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
   );
 }
